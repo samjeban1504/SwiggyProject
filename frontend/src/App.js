@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import CartPreview from './components/CartPreview';
 import Home from './pages/Home';
@@ -20,6 +20,11 @@ import AdminRestaurants from './pages/AdminRestaurants';
 import AdminOrders from './pages/AdminOrders';
 import AdminDeliveryBoys from './pages/AdminDeliveryBoys';
 import AdminFood from './pages/AdminFood';
+
+const AdminRoute = ({ children }) => {
+  const adminUser = localStorage.getItem('adminUser');
+  return adminUser ? children : <Navigate to="/admin/login" />;
+};
 
 function App() {
   const [cart, setCart] = useState(() => {
@@ -107,12 +112,12 @@ function App() {
 
           {/* Admin Routes */}
           <Route path="/admin/login" element={<AdminLogin />} />
-          <Route path="/admin/dashboard" element={<AdminDashboard />} />
-          <Route path="/admin/users" element={<AdminUsers />} />
-          <Route path="/admin/restaurants" element={<AdminRestaurants />} />
-          <Route path="/admin/orders" element={<AdminOrders />} />
-          <Route path="/admin/delivery-boys" element={<AdminDeliveryBoys />} />
-          <Route path="/admin/food" element={<AdminFood />} />
+          <Route path="/admin/profile" element={<AdminRoute><AdminDashboard /></AdminRoute>} />
+          <Route path="/admin/users" element={<AdminRoute><AdminUsers /></AdminRoute>} />
+          <Route path="/admin/restaurants" element={<AdminRoute><AdminRestaurants /></AdminRoute>} />
+          <Route path="/admin/orders" element={<AdminRoute><AdminOrders /></AdminRoute>} />
+          <Route path="/admin/delivery-boys" element={<AdminRoute><AdminDeliveryBoys /></AdminRoute>} />
+          <Route path="/admin/food" element={<AdminRoute><AdminFood /></AdminRoute>} />
         </Routes>
       </div>
     </Router>

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { userAPI, restaurantAPI, foodAPI, orderAPI, deliveryBoyAPI, adminAPI } from '../services/api';
-import { BiLogOutCircle, BiUser, BiRestaurant, BiBox, BiCycling, BiBarChartAlt2 } from 'react-icons/bi';
+import { BiLogOutCircle, BiUser, BiRestaurant, BiBox, BiCycling, BiBarChartAlt2, BiStore, BiDirections } from 'react-icons/bi';
 
 const AdminDashboard = () => {
   const navigate = useNavigate();
@@ -51,6 +51,7 @@ const AdminDashboard = () => {
 
   const handleLogout = () => {
     localStorage.removeItem('adminUser');
+    window.dispatchEvent(new Event('adminAuthChange'));
     navigate('/admin/login');
   };
 
@@ -123,6 +124,54 @@ const AdminDashboard = () => {
             value={stats.totalDeliveryBoys}
             onClick={() => navigate('/admin/delivery-boys')}
           />
+        </div>
+      </div>
+
+      <div className="row mb-4">
+        <div className="col-12">
+          <div className="glass-card p-4">
+            <h5 className="fw-bold mb-3">Partner Portals</h5>
+            <div className="d-flex flex-column flex-md-row gap-3">
+              <button
+                className="btn py-3 fw-semibold flex-grow-1"
+                onClick={() => navigate('/restaurant/dashboard')}
+                style={{
+                  background: 'linear-gradient(135deg, #10b981 0%, #047857 100%)',
+                  color: '#ffffff',
+                  border: 'none',
+                  borderRadius: '10px',
+                  fontSize: '1rem',
+                  letterSpacing: '0.02em',
+                  boxShadow: '0 4px 15px rgba(16, 185, 129, 0.35)',
+                  transition: 'all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1)',
+                }}
+                onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.boxShadow = '0 8px 25px rgba(16, 185, 129, 0.55)'; e.currentTarget.style.filter = 'brightness(1.08)'; }}
+                onMouseLeave={e => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = '0 4px 15px rgba(16, 185, 129, 0.35)'; e.currentTarget.style.filter = 'brightness(1)'; }}
+              >
+                <BiStore className="me-2" size={20} />
+                Restaurant Portal
+              </button>
+              <button
+                className="btn py-3 fw-semibold flex-grow-1"
+                onClick={() => navigate('/delivery/login')}
+                style={{
+                  background: 'linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%)',
+                  color: '#ffffff',
+                  border: 'none',
+                  borderRadius: '10px',
+                  fontSize: '1rem',
+                  letterSpacing: '0.02em',
+                  boxShadow: '0 4px 15px rgba(59, 130, 246, 0.35)',
+                  transition: 'all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1)',
+                }}
+                onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.boxShadow = '0 8px 25px rgba(59, 130, 246, 0.55)'; e.currentTarget.style.filter = 'brightness(1.08)'; }}
+                onMouseLeave={e => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = '0 4px 15px rgba(59, 130, 246, 0.35)'; e.currentTarget.style.filter = 'brightness(1)'; }}
+              >
+                <BiDirections className="me-2" size={20} />
+                Delivery Portal
+              </button>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -243,6 +292,7 @@ const AdminDashboard = () => {
           </div>
         </div>
       </div>
+
     </div>
   );
 };

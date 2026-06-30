@@ -12,7 +12,7 @@ const AdminLogin = () => {
 
   React.useEffect(() => {
     if (localStorage.getItem('adminUser')) {
-      navigate('/admin/dashboard');
+      navigate('/admin/profile');
     }
   }, [navigate]);
 
@@ -29,7 +29,8 @@ const AdminLogin = () => {
     try {
       const res = await adminAPI.login({ username, password });
       localStorage.setItem('adminUser', JSON.stringify(res.data));
-      navigate('/admin/dashboard');
+      window.dispatchEvent(new Event('adminAuthChange')); // trigger navbar update
+      navigate('/admin/profile');
     } catch (err) {
       setError('Invalid username or password.');
     } finally {

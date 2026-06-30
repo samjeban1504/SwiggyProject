@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_BASE_URL = 'http://localhost:8085';
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || 'http://localhost:8085';
 
 const api = axios.create({
   baseURL: API_BASE_URL,
@@ -8,6 +8,8 @@ const api = axios.create({
     'Content-Type': 'application/json',
   },
 });
+
+
 
 export const restaurantAPI = {
   create: (data) => api.post('/restaurant', data),

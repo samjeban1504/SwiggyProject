@@ -46,7 +46,7 @@ const AdminOrders = () => {
       <div className="mb-5">
         <button
           className="btn btn-outline-secondary mb-3"
-          onClick={() => navigate('/admin/dashboard')}
+          onClick={() => navigate('/admin/profile')}
           style={{ borderRadius: '24px', borderWidth: '1.5px' }}
         >
           <BiArrowBack className="me-2" />

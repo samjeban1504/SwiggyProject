@@ -47,7 +47,7 @@ const AdminFood = () => {
       <div className="mb-4">
         <button
           className="btn btn-outline-secondary mb-3"
-          onClick={() => navigate('/admin/dashboard')}
+          onClick={() => navigate('/admin/profile')}
         >
           <BiArrowBack className="me-2" />
           Back to Dashboard

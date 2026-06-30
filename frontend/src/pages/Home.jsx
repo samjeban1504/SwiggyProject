@@ -15,45 +15,10 @@ const Home = () => {
           Order food from the best restaurants near you. Fast delivery, real-time tracking.
         </p>
 
-        <div className="row g-4 justify-content-center mt-3">
-          <div className="col-md-4 col-sm-6">
-            <div className="glass-card h-100 d-flex flex-column align-items-center justify-content-between p-4">
-              <div className="mb-4">
-                <BiUser className="text-warning mb-3" size={54} />
-                <h3 className="h4 fw-bold">Customer Portal</h3>
-                <p className="text-muted small">Browse top restaurants, order delicious meals, and track your delivery live.</p>
-              </div>
-              <Link to="/customer/restaurants" className="btn btn-gradient w-100 mt-auto">
-                Enter Customer Side
-              </Link>
-            </div>
-          </div>
-
-          <div className="col-md-4 col-sm-6">
-            <div className="glass-card h-100 d-flex flex-column align-items-center justify-content-between p-4">
-              <div className="mb-4">
-                <BiRestaurant className="text-success mb-3" size={54} style={{ color: '#2ec4b6' }} />
-                <h3 className="h4 fw-bold">Restaurant Portal</h3>
-                <p className="text-muted small">Register your restaurant, manage your menu items, and process customer orders.</p>
-              </div>
-              <Link to="/restaurant/dashboard" className="btn btn-secondary-gradient w-100 mt-auto">
-                Enter Kitchen Side
-              </Link>
-            </div>
-          </div>
-
-          <div className="col-md-4 col-sm-6">
-            <div className="glass-card h-100 d-flex flex-column align-items-center justify-content-between p-4">
-              <div className="mb-4">
-                <BiCycling className="text-info mb-3" size={54} />
-                <h3 className="h4 fw-bold">Delivery Boy Portal</h3>
-                <p className="text-muted small">View active delivery assignments, navigate to customers, and update delivery status.</p>
-              </div>
-              <Link to="/delivery/dashboard" className="btn btn-gradient w-100 mt-auto" style={{ background: 'linear-gradient(135deg, #0d6efd 0%, #0a58ca 100%)', boxShadow: '0 4px 15px rgba(13,110,253,0.3)' }}>
-                Enter Delivery Side
-              </Link>
-            </div>
-          </div>
+        <div className="mt-5">
+          <Link to="/customer/restaurants" className="btn btn-gradient px-5 py-3 fs-5 fw-bold" style={{ borderRadius: '30px' }}>
+            Explore Restaurants
+          </Link>
         </div>
       </div>
     </div>
